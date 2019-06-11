@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup as soup
+from datetime import datetime
 import requests as rqs
 import re
 
@@ -22,13 +23,11 @@ class bpict_readnphase:
         bpict_phased = bpict_object.select(".tweet > .content")
 
         bpict_timestamp = bpict_object.select(
-            ".tweet > .content > .stream-item-header > .time > .tweet-timestamp > span")
+            ".tweet > .content > .stream-item-header > .time > .tweet-timestamp > ._timestamp ")
         bpict_tweet = bpict_object.select(
             ".tweet > .content > .js-tweet-text-container > .tweet-text")
         bpict_tweetlink = bpict_object.select(
             ".tweet > .content > .stream-item-header > .time > .js-permalink")
-        bpict_tweetpic = bpict_object.select(
-            ".tweet > .content > .js-media-container > div > iframe > html > body > div > .CardContent > a > div > .tcu-imageContainer > .tcu-imageWrapper > img ")
 
         for dat in bpict_tweet:
             dattext = dat.text
@@ -42,8 +41,11 @@ class bpict_readnphase:
                 linkfind = ""
             bpict_tweet_dat["text"].append(datt_1 + "&lt;br&gt;")
 
-        for timestamp in bpict_timestamp:
-            bpict_tweet_dat["timestamp"].append(timestamp.text)
+        for data in bpict_timestamp:
+            timestamp = data.get("data-time")
+            
+            timestamp=datetime.utcfromtimestamp(int(timestamp)+32400).strftime('%A, %d %m %y %H:%M:%S KST')
+            bpict_tweet_dat["timestamp"].append(timestamp)
         for link in bpict_tweetlink:
             bpict_tweet_dat["link"].append(
                 "https://twitter.com"+link.get("href"))
