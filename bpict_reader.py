@@ -44,7 +44,7 @@ class bpict_readnphase:
         for data in bpict_timestamp:
             timestamp = data.get("data-time")
             
-            timestamp=datetime.utcfromtimestamp(int(timestamp)+32400).strftime('%A, %d %m %y %H:%M:%S KST')
+            timestamp=datetime.utcfromtimestamp(int(timestamp)+32400).strftime('%A, %d %m %y %H:%M:%S +0900')
             bpict_tweet_dat["timestamp"].append(timestamp)
         for link in bpict_tweetlink:
             bpict_tweet_dat["link"].append(
