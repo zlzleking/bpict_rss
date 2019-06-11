@@ -13,7 +13,8 @@ def rssize(data):
     for i in range(0, len(data["text"])):
         rss_temp = "<item><title>bpict</title><link>" + \
             data["link"][i] + "</link><description>" + data["text"][i] + \
-            "</description><guid>" + data["link"][i] + "</guid></item>"
+            "</description><guid>" + \
+            data["link"][i] + " </guid > </item >"
         rss_data.append(rss_temp)
 
     rss_temp_2 = "".join(rss_data)
