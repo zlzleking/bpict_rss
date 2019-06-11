@@ -6,21 +6,21 @@ def rssize(data):
     rss_data = []
     nowtime = time.time()
     timestamp = datetime.utcfromtimestamp(
-        int(nowtime)+32400).strftime('%A, %d %m %y %H:%M:%S +0900')
+        int(nowtime)+32400).strftime('%a, %d %b %Y %H:%M:%S +0900')
     rss_header = '''<?xml version="1.0" encoding="UTF-8"?>
                     <rss version="2.0">
 	                <channel>
                     <title>bpict rss feed</title>
                     <link>https://t.me/bpict</link>
-                    <managingEditor>https://t.me/bpict</managingEditor>
-                    <webMaster>zlzleking@gmail.com</webMaster>
+                    <managingEditor>https://t.me/bpict (bluepencil)</managingEditor>
+                    <webMaster>zlzleking@gmail.com (zlzleking)</webMaster>
                     <description>bpict의 rss 피드입니다</description>
                     <language>ko</language>
                     <image>
                         <url>https://bpict.zlzleking.tk/img/bpict_logo.jpg</url>
-                        <width>400</width>
-                        <height>400</height>
-                        <title>bpict 로고</title>
+                        <width>144</width>
+                        <height>144</height>
+                        <title>bpict rss feed</title>
                         <link>https://t.me/bpict</link>
                     </image>
                     <generator>https://github.com/zlzleking/bpict_rss</generator><pubDate>''' + timestamp + "</pubDate><lastBuildDate>" + timestamp + "</lastBuildDate>"
