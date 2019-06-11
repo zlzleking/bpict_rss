@@ -7,6 +7,10 @@ class bpict_readnphase:
 
     def bpict_read():
         bpict_url = "https://twitter.com/bpict_"
+        headers = {
+            'User-Agent': "Zlzleking's bpict rss converter",
+            'From': 'zlzleking@gmail.com'
+        }
         bpict_response = rqs.get(bpict_url)
         return(bpict_response.text)
 
