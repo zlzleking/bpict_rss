@@ -36,7 +36,6 @@ class bpict_readnphase:
                                 linkfind + "&quot;&gt;" + linkfind + "&lt;/a&gt;", datt)
             except:
                 linkfind = ""
-            print(linkfind)
             bpict_tweet_dat["text"].append(datt_1 + "&lt;br&gt;")
 
         for timestamp in bpict_timestamp:
